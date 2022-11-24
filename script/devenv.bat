@@ -1,5 +1,3 @@
-@ECHO OFF
-
 REM Usage: ./devenv.sh <docker command> <image name> <image tag> <container name> <vnc port>
 REM This program creates and logs in to docker image "Kaggle" and container "Kaggle".
 REM This program should be called from "../Makefile" with command "make devenv".
@@ -12,7 +10,6 @@ IF "%1" == "" SET ERROR=TRUE
 IF "%2" == "" SET ERROR=TRUE
 IF "%3" == "" SET ERROR=TRUE
 IF "%4" == "" SET ERROR=TRUE
-IF "%5" == "" SET ERROR=TRUE
 IF %ERROR%==TRUE (
 ECHO There should be 4 arguments.
 EXIT /B -1
@@ -23,7 +20,6 @@ SET DOCKER=%1
 SET IMAGE=%2
 SET TAG=%3
 SET CONTAINER=%4
-SET VNC_PORT=%5
 
 REM MOVE TO DIRECTORY WHERE THIS SCRIPT IS PUT
 SET CURRENTDIR=%~DP1
@@ -44,7 +40,7 @@ FOR /F "USEBACKQ DELIMS=" %%I IN (`%DOCKER% ps -a`) DO (
 	IF NOT ERRORLEVEL 1 SET CONTAINER_EXISTS=TRUE
 )
 IF "!CONTAINER_EXISTS!" == "FALSE" (
-	%DOCKER% run --name %CONTAINER% -p %VNC_PORT%:%VNC_PORT% -i -t %IMAGE%
+	%DOCKER% run --name %CONTAINER% -i -t %IMAGE%
 ) ELSE (
 	SET RUNNING_CONTAINER_EXISTS=FALSE
 	FOR /F "USEBACKQ DELIMS=" %%I IN (`%DOCKER% ps`) DO (

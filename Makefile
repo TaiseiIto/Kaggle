@@ -23,7 +23,7 @@ clean-devenv:
 
 # Build docker environment
 devenv:
-	$(SCRIPT_PREFIX)script$(DELIMITER)devenv$(SCRIPT_SUFFIX) $(DOCKER) $(DOCKER_IMAGE) $(DOCKER_IMAGE_TAG) $(DOCKER_CONTAINER) $(VNC_PORT)
+	$(SCRIPT_PREFIX)script$(DELIMITER)devenv$(SCRIPT_SUFFIX) $(DOCKER) $(DOCKER_IMAGE) $(DOCKER_IMAGE_TAG) $(DOCKER_CONTAINER)
 
 # Only the developer can execute it.
 # usage : $ make gitconfig KEY=<GitHub private key path> GPG=<.gnupg path>
