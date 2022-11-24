@@ -17,6 +17,8 @@ RUN apt install tmux -y
 # tzdata
 RUN apt install tzdata -y
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+# unzip
+RUN apt install unzip -y
 # editor
 RUN apt install vim -y
 # wget
