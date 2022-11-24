@@ -1,3 +1,5 @@
+@ECHO OFF
+
 REM Usage: ./devenv.sh <docker command> <image name> <image tag> <container name>
 REM This program creates and logs in to docker image "Kaggle" and container "Kaggle".
 REM This program should be called from "../Makefile" with command "make devenv".
