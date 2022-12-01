@@ -10,10 +10,6 @@ RUN apt install git -y
 RUN apt install git-email -y
 RUN git config --global pull.rebase false
 RUN mkdir /root/.ssh
-# python
-RUN apt install python3 -y
-RUN apt install python3.10-venv -y
-RUN apt install pip -y
 # tmux
 RUN apt install tmux -y
 # tzdata
@@ -29,10 +25,8 @@ RUN apt install wget -y
 WORKDIR /root
 RUN git clone https://github.com/TaiseiIto/Kaggle.git
 WORKDIR /root/Kaggle
-# python libraries
-RUN python3 -m venv kagglenv
-RUN source kagglenv/bin/activate
-RUN pip install kaggle
+# python
+RUN ./python/setup.sh
 
 # ash setting
 RUN cat ash/.profile >> /root/.bashrc
