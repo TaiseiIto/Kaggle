@@ -26,7 +26,7 @@ WORKDIR /root
 RUN git clone https://github.com/TaiseiIto/Kaggle.git
 WORKDIR /root/Kaggle
 # python
-# RUN ./python/setup.sh
+RUN ./python/setup.sh
 
 # ash setting
 RUN cat ash/.profile >> /root/.bashrc
