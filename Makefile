@@ -28,13 +28,15 @@ devenv:
 # Only the developer can execute it.
 # usage : $ make config SSH=<GitHub private key path> GPG=<.gnupg path> KGL=<kaggle.json>
 config:
-	$(DOCKER) start $(DOCKER_CONTAINER) && \
+	$(DOCKER) start $(DOCKER_CONTAINER)
 	$(DOCKER) exec $(DOCKER_CONTAINER) mkdir /root/.kaggle
-	$(DOCKER) cp $(KGL) $(DOCKER_CONTAINER):/root/.kaggle/kaggle.json && \
-	$(DOCKER) cp $(SSH) $(DOCKER_CONTAINER):/root/Kaggle/ssh/github && \
-	$(DOCKER) cp $(GPG) $(DOCKER_CONTAINER):/root/.gnupg && \
+	$(DOCKER) cp $(GPG) $(DOCKER_CONTAINER):/root/.gnupg
+	$(DOCKER) cp $(KGL) $(DOCKER_CONTAINER):/root/.kaggle/kaggle.json
+	$(DOCKER) cp $(SSH) $(DOCKER_CONTAINER):/root/Kaggle/ssh/github
+	$(DOCKER) exec $(DOCKER_CONATAINER) chmod 600 /root/.gnupg
 	$(DOCKER) exec $(DOCKER_CONATAINER) chmod 600 /root/.kaggle/kaggle.json
-	$(DOCKER) exec -it $(DOCKER_CONTAINER) /root/Kaggle/git/gitconfig.sh && \
+	$(DOCKER) exec $(DOCKER_CONATAINER) chmod 600 :/root/Kaggle/ssh/github
+	$(DOCKER) exec -it $(DOCKER_CONTAINER) /root/Kaggle/git/gitconfig.sh
 	$(DOCKER) stop $(DOCKER_CONTAINER)
 
 # Rebuild docker environment
