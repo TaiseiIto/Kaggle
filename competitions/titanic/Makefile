@@ -7,7 +7,7 @@ clean: clean-csv
 	rm $(ZIP)
 
 clean-csv:
-	rm *.csv
+	for i in $$(ls | grep ^.*\.csv$$); do rm $$i; done
 
 rebuild: clean
 	make
