@@ -15,6 +15,7 @@ rebuild: clean
 $(ZIP):
 	kaggle competitions download -c titanic
 
-%.csv: $(ZIP) clean-csv
-	unzip $<
+%.csv: $(ZIP)
+	make clean-csv
+	unzip $^
 
