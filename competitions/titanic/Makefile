@@ -1,12 +1,13 @@
 COMPETITION=$(shell pwd | awk -F / '{print $$NF}')
-TARGETS=gender_submission.csv test.csv train.csv
+CSVS=gender_submission.csv test.csv train.csv
 UNZIPPED=.unzipped
 ZIP=$(COMPETITION).zip
 
-all: $(TARGETS)
+all: $(CSVS)
+	python learn.py
 
 clean:
-	rm $(TARGETS) $(ZIP)
+	rm $(CSVS) $(ZIP)
 
 rebuild: clean
 	make
