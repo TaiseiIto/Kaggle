@@ -1,16 +1,13 @@
-TARGET=gender_submission.csv test.csv train.csv
 ZIP=titanic.zip
 
-all: $(TARGET)
+all: $(ZIP)
+	unzip $^
 
 clean:
-	rm $(TARGET) $(ZIP)
+	rm *.csv $(ZIP)
 
 rebuild: clean
 	make
-
-$(TARGET): $(ZIP)
-	unzip $^
 
 $(ZIP):
 	kaggle competitions download -c titanic
