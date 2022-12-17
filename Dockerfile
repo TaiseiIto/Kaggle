@@ -25,8 +25,13 @@ RUN apt install wget -y
 WORKDIR /root
 RUN git clone https://github.com/TaiseiIto/Kaggle.git
 WORKDIR /root/Kaggle
-# python
-RUN ./python/setup.sh
+# set up python
+RUN apt install python3 -y
+RUN apt install python3.10-venv -y
+RUN apt install pip -y
+RUN python3 -m venv kagglenv
+RUN . kagglenv/bin/activate
+RUN pip install kaggle
 
 # ash setting
 RUN cat ash/.profile >> /root/.bashrc
