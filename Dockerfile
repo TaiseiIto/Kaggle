@@ -31,7 +31,7 @@ RUN apt install python3.10-venv -y
 RUN apt install pip -y
 RUN python3 -m venv kagglenv
 RUN . kagglenv/bin/activate
-RUN pip install kaggle
+RUN pip install -r python/requirements.txt
 
 # ash setting
 RUN cat ash/.profile >> /root/.bashrc
