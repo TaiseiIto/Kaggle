@@ -33,9 +33,9 @@ config:
 	$(DOCKER) cp $(GPG) $(DOCKER_CONTAINER):/root/.gnupg
 	$(DOCKER) cp $(KGL) $(DOCKER_CONTAINER):/root/.kaggle/kaggle.json
 	$(DOCKER) cp $(SSH) $(DOCKER_CONTAINER):/root/Kaggle/ssh/github
-	$(DOCKER) exec $(DOCKER_CONATAINER) chmod 600 /root/.gnupg
-	$(DOCKER) exec $(DOCKER_CONATAINER) chmod 600 /root/.kaggle/kaggle.json
-	$(DOCKER) exec $(DOCKER_CONATAINER) chmod 600 :/root/Kaggle/ssh/github
+	$(DOCKER) exec $(DOCKER_CONTAINER) chmod 600 /root/.gnupg
+	$(DOCKER) exec $(DOCKER_CONTAINER) chmod 600 /root/.kaggle/kaggle.json
+	$(DOCKER) exec $(DOCKER_CONTAINER) chmod 600 :/root/Kaggle/ssh/github
 	$(DOCKER) exec -it $(DOCKER_CONTAINER) /root/Kaggle/git/gitconfig.sh
 	$(DOCKER) stop $(DOCKER_CONTAINER)
 
