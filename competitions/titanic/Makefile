@@ -1,6 +1,7 @@
+COMPETITION=$(shell pwd | awk -F / '{print $$NF}')
 TARGETS=gender_submission.csv test.csv train.csv
 UNZIPPED=.unzipped
-ZIP=titanic.zip
+ZIP=$(COMPETITION).zip
 
 all: $(TARGETS)
 
@@ -11,7 +12,7 @@ rebuild: clean
 	make
 
 $(ZIP):
-	kaggle competitions download -c titanic
+	kaggle competitions download -c $(COMPETITION)
 
 $(UNZIPPED): $(ZIP)
 	unzip $^
