@@ -33,6 +33,7 @@ config:
 	$(DOCKER) cp $(KGL) $(DOCKER_CONTAINER):/root/.kaggle/kaggle.json && \
 	$(DOCKER) cp $(SSH) $(DOCKER_CONTAINER):/root/Kaggle/ssh/github && \
 	$(DOCKER) cp $(GPG) $(DOCKER_CONTAINER):/root/.gnupg && \
+	$(DOCKER) exec $(DOCKER_CONATAINER) chmod 600 /root/.kaggle/kaggle.json
 	$(DOCKER) exec -it $(DOCKER_CONTAINER) /root/Kaggle/git/gitconfig.sh && \
 	$(DOCKER) stop $(DOCKER_CONTAINER)
 
