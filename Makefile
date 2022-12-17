@@ -17,6 +17,15 @@ DOCKER_IMAGE_TAG = latest
 DOCKER_CONTAINER = kaggle
 DOCKER_CONTAINER_SHELL = /bin/sh
 
+all:
+	make -C competitions
+
+clean:
+	make clean -C competitions
+
+rebuild:
+	make rebuild -C competitions
+
 # Clean docker environment
 clean-devenv:
 	$(SCRIPT_PREFIX)script$(DELIMITER)clean-devenv$(SCRIPT_SUFFIX) $(DOCKER) $(DOCKER_IMAGE) $(DOCKER_CONTAINER)
