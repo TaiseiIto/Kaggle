@@ -1,13 +1,11 @@
 TARGETS=gender_submission.csv test.csv train.csv
+UNZIPPED=.unzipped
 ZIP=titanic.zip
 
 all: $(TARGETS)
 
-clean: clean-csv
-	rm $(ZIP)
-
-clean-csv:
-	for i in $$(ls | grep ^.*\.csv$$); do rm $$i; done
+clean:
+	rm $(TARGETS) $(ZIP)
 
 rebuild: clean
 	make
@@ -15,6 +13,10 @@ rebuild: clean
 $(ZIP):
 	kaggle competitions download -c titanic
 
-%.csv: $(ZIP)
-	unzip -o $^
+$(UNZIPPED): $(ZIP)
+	unzip $^
+	touch $@
+
+%.csv: $(UNZIPPED)
+	:
 
