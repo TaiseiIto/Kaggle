@@ -16,6 +16,5 @@ $(ZIP):
 	kaggle competitions download -c titanic
 
 %.csv: $(ZIP)
-	make clean-csv
-	unzip $^
+	unzip -o $^
 
