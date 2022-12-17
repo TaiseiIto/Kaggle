@@ -26,9 +26,10 @@ devenv:
 	$(SCRIPT_PREFIX)script$(DELIMITER)devenv$(SCRIPT_SUFFIX) $(DOCKER) $(DOCKER_IMAGE) $(DOCKER_IMAGE_TAG) $(DOCKER_CONTAINER)
 
 # Only the developer can execute it.
-# usage : $ make gitconfig KEY=<GitHub private key path> GPG=<.gnupg path>
-gitconfig:
-	$(DOCKER) cp $(KEY) $(DOCKER_CONTAINER):/root/Kaggle/ssh/github && \
+# usage : $ make config SSH=<GitHub private key path> GPG=<.gnupg path> KGL=<kaggle.json>
+config:
+	$(DOCKER) cp $(KGL) $(DOCKER_CONTAINER):/root/.kaggle/kaggle.json && \
+	$(DOCKER) cp $(SSH) $(DOCKER_CONTAINER):/root/Kaggle/ssh/github && \
 	$(DOCKER) cp $(GPG) $(DOCKER_CONTAINER):/root/.gnupg && \
 	$(DOCKER) start $(DOCKER_CONTAINER) && \
 	$(DOCKER) exec -it $(DOCKER_CONTAINER) /root/Kaggle/git/gitconfig.sh && \
