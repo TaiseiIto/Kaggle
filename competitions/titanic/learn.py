@@ -29,10 +29,10 @@ gender_submission_column_names = set(gender_submission_data_frame.columns)
 test_data_column_names = set(test_data_frame.columns)
 output_column_names = gender_submission_column_names - test_data_column_names
 input_column_names = test_data_column_names
-test_input_data_frame = test_data_frame[list(input_column_names)]
-test_output_data_frame = gender_submission_data_frame[list(output_column_names)]
-train_input_data_frame = train_data_frame[list(input_column_names)]
-train_output_data_frame = train_data_frame[list(output_column_names)]
+test_input_data_frame = test_data_frame[list(input_column_names)].sort_index(axis = 1, ascending = True)
+test_output_data_frame = gender_submission_data_frame[list(output_column_names)].sort_index(axis = 1, ascending = True)
+train_input_data_frame = train_data_frame[list(input_column_names)].sort_index(axis = 1, ascending = True)
+train_output_data_frame = train_data_frame[list(output_column_names)].sort_index(axis = 1, ascending = True)
 model = lightgbm.LGBMClassifier()
 model.fit(train_input_data_frame, train_output_data_frame)
 score = model.score(test_input_data_frame, test_output_data_frame)
