@@ -18,6 +18,7 @@ DOCKER_CONTAINER = kaggle
 DOCKER_CONTAINER_SHELL = /bin/sh
 
 all:
+	pip install -r python/requirements.txt
 	make -C competitions
 
 clean:
