@@ -1,13 +1,16 @@
 COMPETITION=$(shell pwd | awk -F / '{print $$NF}')
 CSVS=gender_submission.csv test.csv train.csv
+MODEL=model.pkl
 UNZIPPED=.unzipped
 ZIP=$(COMPETITION).zip
 
-all: $(CSVS)
+all: $(MODEL)
+
+$(MODEL): $(CSVS)
 	python learn.py
 
 clean:
-	rm $(CSVS) $(ZIP)
+	rm $(CSVS) $(MODEL) $(ZIP)
 
 rebuild: clean
 	make
