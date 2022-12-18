@@ -12,8 +12,8 @@ if __name__ == '__main__':
 	embarked_mark_to_number = {embarked_marks[number] : number for number in range(len(embarked_marks))}
 	test_data_frame['Cabin'] = test_data_frame['Cabin'].map(lambda cabin : len(cabin.split()) if isinstance(cabin, str) else numpy.nan)
 	train_data_frame['Cabin'] = train_data_frame['Cabin'].map(lambda cabin : len(cabin.split()) if isinstance(cabin, str) else numpy.nan)
-	test_data_frame['Embarked'] = test_data_frame['Embarked'].map(lambda embarked_mark : embarked_mark_to_number[embarked_mark])
-	train_data_frame['Embarked'] = train_data_frame['Embarked'].map(lambda embarked_mark : embarked_mark_to_number[embarked_mark])
+	test_data_frame['Embarked'] = test_data_frame['Embarked'].map(lambda embarked_mark : embarked_mark_to_number[embarked_mark] if isinstance(embarked_mark, str) else numpy.nan)
+	train_data_frame['Embarked'] = train_data_frame['Embarked'].map(lambda embarked_mark : embarked_mark_to_number[embarked_mark] if isinstance(embarked_mark, str) else numpy.nan)
 	test_data_frame = test_data_frame.drop('Name', axis = 1)
 	train_data_frame = train_data_frame.drop('Name', axis = 1)
 	print('gender_submission_data_frame')
