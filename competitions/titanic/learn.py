@@ -1,11 +1,18 @@
-import pandas
 import lightgbm
+import numpy
+import pandas
 
 if __name__ == '__main__':
 	print('Hello, World!')
 	gender_submission_data_frame = pandas.read_csv('gender_submission.csv')
 	test_data_frame = pandas.read_csv('test.csv')
+	test_data_frame['CabinAlphabet'] = test_data_frame['Cabin'].map(lambda cabin : ord(cabin[0]) if isinstance(cabin, str) else numpy.nan)
+	test_data_frame['CabinInteger'] = test_data_frame['Cabin'].map(lambda cabin : cabin[1:] if isinstance(cabin, str) else numpy.nan)
+	test_data_frame = test_data_frame.drop('Name', axis = 1)
 	train_data_frame = pandas.read_csv('train.csv')
+	train_data_frame['CabinAlphabet'] = train_data_frame['Cabin'].map(lambda cabin : ord(cabin[0]) if isinstance(cabin, str) else numpy.nan)
+	train_data_frame['CabinInteger'] = train_data_frame['Cabin'].map(lambda cabin : cabin[1:] if isinstance(cabin, str) else numpy.nan)
+	train_data_frame = train_data_frame.drop('Name', axis = 1)
 	print('gender_submission_data_frame')
 	print(gender_submission_data_frame)
 	print('test_data_frame')
