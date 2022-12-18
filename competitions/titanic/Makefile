@@ -4,11 +4,11 @@ MODEL=model.pkl
 UNZIPPED=.unzipped
 ZIP=$(COMPETITION).zip
 
-all: $(MODEL)
-	python evaluate.py
+all: evaluate.py $(MODEL)
+	python $<
 
-$(MODEL): $(CSVS)
-	python learn.py
+$(MODEL): learn.py $(CSVS)
+	python $<
 
 clean:
 	rm $(CSVS) $(MODEL) $(ZIP)
