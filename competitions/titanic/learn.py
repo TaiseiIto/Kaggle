@@ -1,6 +1,7 @@
 import lightgbm
 import numpy
 import pandas
+import pickle
 import re
 
 if __name__ == '__main__':
@@ -37,4 +38,6 @@ if __name__ == '__main__':
 	model.fit(train_input_data_frame, train_output_data_frame)
 	score = model.score(test_input_data_frame, test_output_data_frame)
 	print('score = {}'.format(score))
+	with open('model.pkl', 'wb') as model_file:
+		pickle.dump(model, model_file)
 
