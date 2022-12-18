@@ -5,6 +5,7 @@ UNZIPPED=.unzipped
 ZIP=$(COMPETITION).zip
 
 all: $(MODEL)
+	python evaluate.py
 
 $(MODEL): $(CSVS)
 	python learn.py

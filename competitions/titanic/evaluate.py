@@ -24,6 +24,8 @@ output_column_names = gender_submission_column_names - test_data_column_names
 input_column_names = test_data_column_names
 test_input_data_frame = test_data_frame[input_column_names]
 test_output_data_frame = gender_submission_data_frame[output_column_names]
-print(test_input_data_frame)
-print(test_output_data_frame)
+with open('model.pkl', 'rb') as model_file:
+	model = pickle.load(model_file)
+score = model.score(test_input_data_frame, test_output_data_frame)
+print('score = {}'.format(score))
 
