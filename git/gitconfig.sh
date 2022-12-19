@@ -31,7 +31,7 @@ git config --global sendemail.smtpserverport 587
 git config --global sendemail.smtppass $password
 git config --global user.email $email
 git config --global user.name $name
-git config --global user.signingkey 5F1ABB3B591CCA48
+git config --global user.signingkey $(head -n1 /root/.gnupg/signingkey.txt)
 git config --global --add commit.gpgsign true
 git remote set-url origin git@github.com:TaiseiIto/Kaggle.git
 cat gitconfig >> /root/.gitconfig
