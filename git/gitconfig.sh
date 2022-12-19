@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This program gives the push access right.
 # Only the developer can execute it.
