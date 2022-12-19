@@ -22,6 +22,7 @@ while true ; do
 	prompt="*"
 	password+="$char"
 done
+echo
 git config --global sendemail.confirm auto
 git config --global sendemail.smtpserver smtp.office365.com
 git config --global sendemail.smtpencryption tls
