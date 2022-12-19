@@ -7,12 +7,21 @@
 
 currentdir=$(pwd)
 cd $(dirname $0)
-echo -n "Your GitHub email:"
-read email
-echo -n "Your GitHub name:"
-read name
-echo -n "Password of ${email}:"
-read password
+unset email
+read -p "Your GitHub email:" email
+echo -n ""
+unset name
+read -p "Your GitHub name:" name
+unset password
+prompt="Password of ${email}:"
+while true ; do
+	read -n 1 -p "$prompt" -r -s char
+	if [[ $char == $'\0' ]]; then
+		break
+	fi
+	prompt="*"
+	password+="$char"
+done
 git config --global sendemail.confirm auto
 git config --global sendemail.smtpserver smtp.office365.com
 git config --global sendemail.smtpencryption tls
