@@ -7,10 +7,7 @@
 
 currentdir=$(pwd)
 cd $(dirname $0)
-unset email
 read -p "Your GitHub email:" email
-echo -n ""
-unset name
 read -p "Your GitHub name:" name
 unset password
 prompt="Password of ${email}:"
