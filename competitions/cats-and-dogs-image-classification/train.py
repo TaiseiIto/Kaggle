@@ -55,7 +55,10 @@ if __name__=='__main__':
 	batch_size = int(numpy.power(2, numpy.floor(numpy.log2(numpy.sqrt(len(train_image_paths))))))
 	model.fit(train_x, train_y, batch_size = batch_size, epochs = 1)
 
-	predicted_train_y = model.predict(train_x)
-	print(f'train_y = {train_y}')
-	print(f'predicted_train_y = {predicted_train_y}')
+	train_loss, train_accuracy = model.evaluate(train_x, train_y)
+	print(f'train_loss = {train_loss}')
+	print(f'train_accuracy = {train_accuracy}')
+	test_loss, test_accuracy = model.evaluate(test_x, test_y)
+	print(f'test_loss = {test_loss}')
+	print(f'test_accuracy = {test_accuracy}')
 
