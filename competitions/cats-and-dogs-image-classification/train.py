@@ -51,4 +51,7 @@ if __name__=='__main__':
 
 	model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = 'accuracy')
 	model.summary()
+	
+	batch_size = numpy.power(2, numpy.floor(numpy.log2(numpy.sqrt(len(train_image_paths)))))
+	model.fit(train_x, train_y, batch_size = batch_size, epochs = 1)
 
