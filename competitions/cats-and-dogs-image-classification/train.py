@@ -49,10 +49,10 @@ if __name__=='__main__':
 	model.add(tensorflow.keras.layers.Dropout(0.1))
 	model.add(tensorflow.keras.layers.Dense(len(labels), activation = 'softmax'))
 
-	model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = 'accuracy')
+	model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 	model.summary()
 	
-	batch_size = numpy.power(2, numpy.floor(numpy.log2(numpy.sqrt(len(train_image_paths)))))
+	batch_size = int(numpy.power(2, numpy.floor(numpy.log2(numpy.sqrt(len(train_image_paths))))))
 	model.fit(train_x, train_y, batch_size = batch_size, epochs = 1)
 
 	predicted_train_y = model.predict(train_x)
