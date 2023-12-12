@@ -1,4 +1,5 @@
 kaggle
 lightgbm
 pandas
+scikit-learn
 
