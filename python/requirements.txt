@@ -1,5 +1,8 @@
+Pillow
 kaggle
 lightgbm
+numpy
 pandas
 scikit-learn
+tensorflow
 
