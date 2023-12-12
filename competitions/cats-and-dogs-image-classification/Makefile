@@ -1,13 +1,13 @@
 DATASET=$(shell pwd | awk -F / '{print $$NF}')
-ZIP=$(DATASET).zip
-UNZIPPED=$(DATASET)
+ZIPPED_IMAGES=$(DATASET).zip
+IMAGES=train test
 
-all:
+all: $(IMAGES)
 	python train.py
 
-$(ZIP):
-	kaggle datasets download samuelcortinhas/$(DATASET)
-
-$(UNZIPPED): $(ZIP)
+$(IMAGES): $(ZIPPED_IMAGES)
 	unzip $^
+
+$(ZIPPED_IMAGES):
+	kaggle datasets download samuelcortinhas/$(DATASET)
 

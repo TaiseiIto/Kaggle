@@ -8,7 +8,7 @@ if __name__=='__main__':
     image_width = 0x100
     image_height = 0x100
     image_size = (image_width, image_height)
-    images = pathlib.Path.cwd() / 'images'
+    images = pathlib.Path.cwd()
     train_images = images / 'train'
     test_images = images / 'test'
     labels = {label.name for label in train_images.iterdir()} | {label.name for label in test_images.iterdir()}
