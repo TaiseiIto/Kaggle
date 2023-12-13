@@ -2,9 +2,14 @@ from PIL import Image
 import functools
 import numpy
 import pathlib
+import random
 import tensorflow
 
 if __name__=='__main__':
+	seed = 0
+	random.seed(seed)
+	numpy.random.seed(seed)
+	tensorflow.random.set_seed(seed)
 	image_width = 0x100
 	image_height = 0x100
 	image_size = (image_width, image_height)
