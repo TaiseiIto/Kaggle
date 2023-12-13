@@ -3,6 +3,9 @@ MODEL=model
 IMAGES=train test
 ZIPPED_IMAGES=$(DATASET).zip
 
+all: $(MODEL)
+	python test.py
+
 $(MODEL): $(IMAGES)
 	python train.py
 

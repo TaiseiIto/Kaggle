@@ -55,9 +55,9 @@ if __name__=='__main__':
 	model.add(tensorflow.keras.layers.Dense(len(labels), activation = 'softmax'))
 
 	model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
-	model.summary()
 	batch_size = int(numpy.power(2, numpy.floor(numpy.log2(numpy.sqrt(len(train_image_paths))))))
 	model.fit(train_x, train_y, batch_size = batch_size, epochs = 1)
+	model.summary()
 
 	train_loss, train_accuracy = model.evaluate(train_x, train_y)
 	print(f'train_loss = {train_loss}')
