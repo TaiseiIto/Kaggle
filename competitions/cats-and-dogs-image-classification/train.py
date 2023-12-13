@@ -56,7 +56,6 @@ if __name__=='__main__':
 
 	model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 	model.summary()
-	
 	batch_size = int(numpy.power(2, numpy.floor(numpy.log2(numpy.sqrt(len(train_image_paths))))))
 	model.fit(train_x, train_y, batch_size = batch_size, epochs = 1)
 
@@ -66,4 +65,6 @@ if __name__=='__main__':
 	test_loss, test_accuracy = model.evaluate(test_x, test_y)
 	print(f'test_loss = {test_loss}')
 	print(f'test_accuracy = {test_accuracy}')
+
+	model.save('model')
 

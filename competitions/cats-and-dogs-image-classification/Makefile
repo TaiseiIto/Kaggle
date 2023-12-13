@@ -1,8 +1,9 @@
 DATASET=$(shell pwd | awk -F / '{print $$NF}')
-ZIPPED_IMAGES=$(DATASET).zip
+MODEL=model
 IMAGES=train test
+ZIPPED_IMAGES=$(DATASET).zip
 
-all: $(IMAGES)
+$(MODEL): $(IMAGES)
 	python train.py
 
 $(IMAGES): $(ZIPPED_IMAGES)
