@@ -36,4 +36,6 @@ if __name__=='__main__':
 	print(f'input_name = {input_name}')
 	output_name = model.get_outputs()[0].name
 	print(f'output_name = {output_name}')
+	predicted_test_y = model.run([output_name], {input_name : test_x.astype(numpy.float32)})[0]
+	print(f'predicted_test_y = {predicted_test_y}')
 
