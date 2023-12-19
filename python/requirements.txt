@@ -2,6 +2,7 @@ Pillow
 kaggle
 lightgbm
 numpy
+onnx == 1.14.1
 onnxruntime
 pandas
 scikit-learn
