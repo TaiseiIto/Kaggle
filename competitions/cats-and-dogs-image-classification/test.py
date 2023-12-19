@@ -33,9 +33,11 @@ if __name__=='__main__':
 
 	model = onnxruntime.InferenceSession('model.onnx')
 	input_name = model.get_inputs()[0].name
-	print(f'input_name = {input_name}')
 	output_name = model.get_outputs()[0].name
-	print(f'output_name = {output_name}')
 	predicted_test_y = model.run([output_name], {input_name : test_x.astype(numpy.float32)})[0]
-	print(f'predicted_test_y = {predicted_test_y}')
+	correct_y_and_predicted_y_list = zip(test_y, predicted_test_y)
+	test_length = len([None for correct_y, predicted_y in correct_y_and_predicted_y_list])
+	print(f'test_length = {test_length}')
+	correct_length = len([None for correct_y, predicted_y in correct_y_and_predicted_y_list if numpy.argmax(correct_y) == numpy.argmax(predicted_y)])
+	print(f'correct_length = {correct_length}')
 
