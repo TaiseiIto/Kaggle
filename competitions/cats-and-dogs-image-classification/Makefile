@@ -1,5 +1,5 @@
 DATASET=$(shell pwd | awk -F / '{print $$NF}')
-MODEL=model
+MODEL=model.onnx
 IMAGES=train test
 ZIPPED_IMAGES=$(DATASET).zip
 

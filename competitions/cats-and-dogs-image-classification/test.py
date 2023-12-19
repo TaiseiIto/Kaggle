@@ -4,6 +4,7 @@ import numpy
 import pathlib
 import random
 import tensorflow
+import onnxruntime
 
 if __name__=='__main__':
 	seed = 0
@@ -30,10 +31,9 @@ if __name__=='__main__':
 	test_x = numpy.array([test_image_path_id2test_image[test_image_path_id] for test_image_path_id in sorted(test_image_path_ids)])
 	test_y = numpy.array([test_image_path_id2label_one_hot_vector[test_image_path_id] for test_image_path_id in sorted(test_image_path_ids)])
 
-	model = tensorflow.keras.models.load_model('model')
-	model.summary()
-
-	test_loss, test_accuracy = model.evaluate(test_x, test_y)
-	print(f'test_loss = {test_loss}')
-	print(f'test_accuracy = {test_accuracy}')
+	model = onnxruntime.InferenceSession('model.onnx')
+	input_name = model.get_inputs()[0].name
+	print(f'input_name = {input_name}')
+	output_name = model.get_outputs()[0].name
+	print(f'output_name = {output_name}')
 

@@ -67,7 +67,9 @@ if __name__=='__main__':
 	print(f'test_loss = {test_loss}')
 	print(f'test_accuracy = {test_accuracy}')
 
-	model.save('model')
+	model, external_tensor_storage = tf2onnx.convert.from_keras(model)
+	model = model.SerializeToString()
 
-	model_proto, external_tensor_storage = tf2onnx.convert.from_keras(model)
+	with open("model.onnx", "wb") as onnx_file:
+		onnx_file.write(model)
 
