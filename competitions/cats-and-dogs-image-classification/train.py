@@ -4,6 +4,7 @@ import numpy
 import pathlib
 import random
 import tensorflow
+import keras2onnx
 
 if __name__=='__main__':
 	seed = 0
@@ -67,4 +68,6 @@ if __name__=='__main__':
 	print(f'test_accuracy = {test_accuracy}')
 
 	model.save('model')
+
+	model = keras2onnx.convert_keras(model)
 

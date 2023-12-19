@@ -1,5 +1,6 @@
 Pillow
 kaggle
+keras2onnx
 lightgbm
 numpy
 pandas
