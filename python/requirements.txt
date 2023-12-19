@@ -1,9 +1,10 @@
 Pillow
 kaggle
-keras2onnx
 lightgbm
 numpy
+onnxruntime
 pandas
 scikit-learn
 tensorflow
+tf2onnx
 

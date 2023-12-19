@@ -4,7 +4,7 @@ import numpy
 import pathlib
 import random
 import tensorflow
-import keras2onnx
+import tf2onnx
 
 if __name__=='__main__':
 	seed = 0
@@ -69,5 +69,7 @@ if __name__=='__main__':
 
 	model.save('model')
 
-	model = keras2onnx.convert_keras(model)
+	model_proto, external_tensor_storage = tf2onnx.convert.from_keras(model)
+	print(f'model_proto = {model_proto}')
+	print(f'external_tensor_storage = {external_tensor_storage}')
 
