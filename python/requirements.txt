@@ -1,6 +1,7 @@
 Pillow
 kaggle
 lightgbm
+nnoir-onnx
 numpy
 onnx == 1.14.1
 onnxruntime
