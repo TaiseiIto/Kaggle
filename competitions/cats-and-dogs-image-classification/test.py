@@ -34,10 +34,10 @@ if __name__=='__main__':
 	model = onnxruntime.InferenceSession('model.onnx')
 	input_name = model.get_inputs()[0].name
 	output_name = model.get_outputs()[0].name
-	predicted_test_y = model.run([output_name], {input_name : test_x.astype(numpy.float32)})[0]
-	correct_y_and_predicted_y_list = zip(test_y, predicted_test_y)
-	test_length = len([None for correct_y, predicted_y in correct_y_and_predicted_y_list])
-	print(f'test_length = {test_length}')
-	correct_length = len([None for correct_y, predicted_y in correct_y_and_predicted_y_list if numpy.argmax(correct_y) == numpy.argmax(predicted_y)])
-	print(f'correct_length = {correct_length}')
+	predicted_y = model.run([output_name], {input_name : test_x.astype(numpy.float32)})[0]
+	test_y = [numpy.argmax(test_y) for test_y in test_y]
+	predicted_y = [numpy.argmax(predicted_y) for predicted_y in predicted_y]
+	correctness = [test_y == predicted_y for test_y, predicted_y in zip(test_y, predicted_y)]
+	accuracy = len([correctness for correctness in correctness if correctness]) / len(correctness)
+	print(f'accuracy = {accuracy}')
 
