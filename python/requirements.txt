@@ -5,6 +5,7 @@ nnoir-onnx
 numpy
 onnx == 1.14.1
 onnxruntime
+onnxsim
 pandas
 scikit-learn
 tensorflow

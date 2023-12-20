@@ -1,4 +1,5 @@
-model.onnx
+*.nnoir
+*.onnx
 test
 train
 
