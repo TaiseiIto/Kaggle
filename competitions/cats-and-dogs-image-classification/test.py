@@ -31,10 +31,10 @@ if __name__=='__main__':
 	test_x = numpy.array([test_image_path_id2test_image[test_image_path_id] for test_image_path_id in sorted(test_image_path_ids)])
 	test_y = numpy.array([test_image_path_id2label_one_hot_vector[test_image_path_id] for test_image_path_id in sorted(test_image_path_ids)])
 
-	model = onnxruntime.InferenceSession('model.onnx')
+	model = onnxruntime.InferenceSession('model_fix_dimension.onnx')
 	input_name = model.get_inputs()[0].name
 	output_name = model.get_outputs()[0].name
-	predicted_y = model.run([output_name], {input_name : test_x.astype(numpy.float32)})[0]
+	predicted_y = [model.run([output_name], {input_name: [test_x.astype(numpy.float32)]})[0] for test_x in test_x]
 	test_y = [numpy.argmax(test_y) for test_y in test_y]
 	predicted_y = [numpy.argmax(predicted_y) for predicted_y in predicted_y]
 	correctness = [test_y == predicted_y for test_y, predicted_y in zip(test_y, predicted_y)]
